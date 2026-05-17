@@ -2,12 +2,12 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="author" content="Pengfei Lyu (Lv)">
+  <meta name="author" content="Xiaosheng Yu">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
-  <title>Pengfei Lyu (Lv)</title>
+  <title>Xiaosheng Yu</title>
+
   <style>
-    /* 全局变量：浅色/深色模式切换 */
     :root {
       --bg-color: #ffffff;
       --text-color: #2c3e50;
@@ -16,6 +16,7 @@
       --border-color: #e5e7eb;
       --shadow: 0 2px 10px rgba(0,0,0,0.08);
     }
+
     .dark-mode {
       --bg-color: #121212;
       --text-color: #e0e0e0;
@@ -29,17 +30,16 @@
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      transition: all 0.3s ease;
+      transition: all 0.25s ease;
     }
 
-    /* 全局平滑滚动 */
     html {
       scroll-behavior: smooth;
     }
 
     body {
-      font-family: 'Segoe UI', Roboto, Arial, sans-serif;
-      line-height: 1.7;
+      font-family: "Segoe UI", Roboto, Arial, sans-serif;
+      line-height: 1.55;
       color: var(--text-color);
       background-color: var(--bg-color);
       padding: 1rem 0.5rem;
@@ -53,26 +53,53 @@
       z-index: 1;
     }
 
-    /* 个人信息头部 */
     .header {
       display: flex;
       flex-wrap: wrap;
       align-items: center;
       gap: 2rem;
-      margin-bottom: 2rem;
+      margin-bottom: 1.4rem;
     }
+
     .info {
       flex: 1;
       min-width: 300px;
     }
-    .avatar {
+
+    .avatar-wrap {
       width: 180px;
       height: 180px;
-      object-fit: cover;
       border-radius: 12px;
       box-shadow: var(--shadow);
+      overflow: hidden;
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
-    .avatar:hover {
+
+    .avatar {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .avatar-placeholder {
+      width: 100%;
+      height: 100%;
+      display: none;
+      justify-content: center;
+      align-items: center;
+      font-size: 1.1em;
+      font-weight: 600;
+      color: var(--primary);
+      text-align: center;
+      padding: 1rem;
+    }
+
+    .avatar-wrap:hover {
       transform: scale(1.03);
     }
 
@@ -80,89 +107,134 @@
       font-size: 2.2em;
       font-weight: 700;
       color: var(--primary);
-      margin-bottom: 1rem;
+      margin-bottom: 0.8rem;
       text-align: center;
+    }
+
+    .info p {
+      margin: 5px 0;
     }
 
     .links {
       text-align: center;
-      margin-top: 1rem;
+      margin-top: 0.8rem;
     }
+
     a {
       color: var(--primary);
       text-decoration: none;
       font-weight: 500;
     }
+
     a:hover {
       text-decoration: underline;
     }
 
-    /* 分割线 */
     hr {
       border: none;
       height: 1px;
       background-color: var(--border-color);
-      margin: 2rem 0;
+      margin: 1.5rem 0;
     }
 
-    /* 标题样式 */
     h3 {
-      font-size: 1.4em;
+      font-size: 1.35em;
       font-weight: 600;
       color: var(--text-color);
-      margin-bottom: 1.2rem;
-      padding-bottom: 0.5rem;
+      margin-bottom: 0.8rem;
+      padding-bottom: 0.35rem;
       border-bottom: 2px solid var(--primary);
       display: inline-block;
     }
 
-    /* 卡片通用样式 */
     .card {
       background-color: var(--card-bg);
-      padding: 1.2rem 1.5rem;
+      padding: 0.9rem 1.25rem;
+      padding-left: 1.8rem;
       border-radius: 10px;
       box-shadow: var(--shadow);
-      margin-bottom: 1rem;
+      margin-bottom: 0.75rem;
       position: relative;
-      padding-left: 2rem;
     }
+
     .card::before {
       content: "";
       position: absolute;
-      left: 0.8rem;
-      top: 1.4rem;
+      left: 0.75rem;
+      top: 1.15rem;
       width: 6px;
       height: 6px;
       background: var(--primary);
       border-radius: 50%;
     }
+
     .card:hover {
-      transform: translateY(-3px);
+      transform: translateY(-2px);
       box-shadow: 0 4px 15px rgba(0,0,0,0.1);
     }
 
-    /* 期刊标签高亮 */
+    .card p {
+      margin: 3px 0;
+    }
+
+    .resume-list {
+      margin-top: 4px;
+      padding-left: 1.1rem;
+    }
+
+    .resume-list li {
+      margin-bottom: 3px;
+    }
+
+    .services-item {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .papertitle {
+      font-size: 1.02em;
+    }
+
+    .venue-line {
+      margin: 4px 0 0 0;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .paper-meta {
+      display: inline;
+      font-size: 0.9em;
+      color: var(--primary);
+      font-weight: 600;
+      font-style: normal;
+    }
+
     .tag {
       padding: 2px 8px;
       border-radius: 4px;
       font-size: 0.85em;
-      margin-right: 5px;
+      margin-right: 4px;
       color: white;
+      font-style: normal;
+      white-space: nowrap;
     }
+
+    .tag-tvc { background-color: #6d59b6; }
     .tag-tip { background-color: #e74c3c; }
-    .tag-tgrs { background-color: #2ecc71; }
-    .tag-tcsvt { background-color: #3498db; }
-    .tag-arxiv { background-color: #9b59b6; }
-    .tag-tutu { background-color: #6d59b6; }
-    .tag-ieice { background-color: #a2b659; }
+    .tag-tce { background-color: #3498db; }
+    .tag-infofusion { background-color: #16a085; }
+    .tag-grsl { background-color: #2ecc71; }
+    .tag-cg { background-color: #9b59b6; }
+    .tag-cee { background-color: #f39c12; }
+    .tag-mbec { background-color: #27ae60; }
+    .tag-asoc { background-color: #8e44ad; }
+    .tag-ijist { background-color: #34495e; }
+    .tag-jdi { background-color: #d35400; }
+    .tag-eswa { background-color: #c0392b; }
+    .tag-jvcir { background-color: #7f8c8d; }
 
-    /* 学术服务单行显示 */
-    .services-item {
-      display: block;
-      margin-bottom: 8px;
-    }
-
-    /* 模态框样式 */
     .modal {
       display: none;
       position: fixed;
@@ -173,6 +245,7 @@
       height: 100%;
       background-color: rgba(0,0,0,0.7);
     }
+
     .modal-content {
       position: absolute;
       top: 50%;
@@ -184,21 +257,17 @@
       text-align: center;
       min-width: 300px;
     }
-    .modal-content img {
-      max-width: 250px;
-      height: auto;
-      margin-bottom: 1rem;
-      border-radius: 8px;
-    }
+
     .email-text {
-      font-size: 1.2em;
-      padding: 1rem 1.5rem;
+      font-size: 1.05em;
+      padding: 0.8rem 1.2rem;
       background-color: var(--bg-color);
       border-radius: 6px;
       margin-bottom: 1rem;
       cursor: pointer;
       border: 1px solid var(--border-color);
     }
+
     .close {
       position: absolute;
       top: 10px;
@@ -207,11 +276,11 @@
       cursor: pointer;
       color: var(--text-color);
     }
+
     .close:hover {
       color: var(--primary);
     }
 
-    /* 回到顶部按钮 */
     #backTop {
       position: fixed;
       bottom: 2rem;
@@ -230,16 +299,16 @@
       box-shadow: var(--shadow);
       z-index: 999;
     }
+
     #backTop:hover {
       background-color: #0047cc;
     }
 
-    /* 深色模式切换按钮 */
     #themeToggle {
       position: fixed;
       top: 1rem;
       right: 1rem;
-      padding: 0.5rem 1rem;
+      padding: 0.45rem 0.9rem;
       border-radius: 20px;
       border: none;
       background-color: var(--primary);
@@ -248,30 +317,6 @@
       z-index: 999;
     }
 
-    /* 课题组相册样式 */
-    .gallery-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 1rem;
-      margin-top: 1rem;
-    }
-    .gallery-item {
-      border-radius: 10px;
-      overflow: hidden;
-      box-shadow: var(--shadow);
-      aspect-ratio: 4/3;
-    }
-    .gallery-item img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      cursor: pointer;
-    }
-    .gallery-item:hover {
-      transform: translateY(-5px);
-    }
-
-    /* 页面加载动画 */
     .loader {
       position: fixed;
       top: 0;
@@ -280,18 +325,17 @@
       height: 100%;
       background: var(--bg-color);
       display: flex;
-      theight: 100%;
-      background: var(--bg-color);
-      display: flex;
       justify-content: center;
       align-items: center;
       z-index: 9999;
       transition: opacity 0.5s ease;
     }
+
     .loader.hidden {
       opacity: 0;
       pointer-events: none;
     }
+
     .loader-circle {
       width: 50px;
       height: 50px;
@@ -300,23 +344,23 @@
       border-radius: 50%;
       animation: spin 1s linear infinite;
     }
+
     @keyframes spin {
       0% { transform: rotate(0deg); }
       100% { transform: rotate(360deg); }
     }
 
-    /* 滚动淡入动画 */
     .fade-in {
       opacity: 0;
       transform: translateY(20px);
       transition: all 0.6s ease;
     }
+
     .fade-in.visible {
       opacity: 1;
       transform: translateY(0);
     }
 
-    /* 访问统计样式 */
     .visitor-count {
       text-align: center;
       padding: 0.8rem;
@@ -325,222 +369,462 @@
       margin-top: 1rem;
       font-size: 0.9em;
     }
+
+    @media (max-width: 760px) {
+      .header {
+        justify-content: center;
+      }
+
+      .name {
+        font-size: 1.8em;
+      }
+
+      .avatar-wrap {
+        width: 160px;
+        height: 160px;
+      }
+
+      #themeToggle {
+        top: 0.6rem;
+        right: 0.6rem;
+        font-size: 0.85em;
+      }
+
+      .venue-line {
+        display: block;
+      }
+
+      .paper-meta {
+        display: block;
+        margin-top: 4px;
+      }
+    }
   </style>
 </head>
+
 <body>
-  <!-- 页面加载动画 -->
   <div class="loader" id="loader">
     <div class="loader-circle"></div>
   </div>
 
-  <!-- 深色模式切换 -->
   <button id="themeToggle">🌙 Dark Mode</button>
-  <!-- 回到顶部按钮 -->
   <button id="backTop">🚀</button>
 
   <div class="container">
-    <!-- 头部信息 -->
+
+    <!-- Header -->
     <div class="header fade-in">
       <div class="info">
-        <h1 class="name">Pengfei Lyu (Lv) 吕鹏飞</h1>
-        <p>🧑‍🔬 I am a Research Fellow at the College of Computer Science, Inner Mongolia University, and am affiliated with the Spatio-Temporal Intelligence Research Center, led by <a href="https://ccs.imu.edu.cn/info/1020/1840.htm">Prof. Zhenwei Shi</a>.</p>
-        <p>🎓 I received my Ph.D. from the Faculty of Robot Science and Engineering, Northeastern University, China, under the supervision of <a href="http://www.rse.neu.edu.cn/2021/1223/c2275a208779/page.htm">Prof. Chengdong Wu</a>, and worked with <a href="http://www.rse.neu.edu.cn/2024/0906/c2274a267941/page.htm"> Dr. Xiaosheng Yu</a>.</p>
-        <p>✈️ I was also a Joint PhD student at the College of Computing and Data Science, Nanyang Technological University, Singapore, supervised by <a href="https://personal.ntu.edu.sg/asjagath/">Prof. Jagath C. Rajapakse (IEEE Fellow)</a> and worked closely with <a href="https://pakheiyeung.github.io/"> Dr. Pak-Hei Yeung</a> and <a href="https://person.zju.edu.cn/xiajing"> Dr. Jing Xia</a>.</p>
-        <p>🔍 My research interests include computer vision and machine learning, with a current focus on multimodal collaborative perception in real-world scenarios.</p>
+        <h1 class="name">Xiaosheng Yu 于晓升</h1>
+
+        <p>
+          🧑‍🔬 I am an Associate Professor at the Faculty of Robot Science and Engineering,
+          Northeastern University, China.
+        </p>
+
+        <p>
+          🎓 I received my Ph.D. in Pattern Recognition and Intelligent Systems from Northeastern University.
+          I was also a postdoctoral researcher in Computer Science and Engineering at Northeastern University.
+        </p>
+
+        <p>
+          🔍 My research interests include computer vision, image processing, machine learning,
+          medical image analysis, visual saliency detection, RGB-T perception, and novel view synthesis.
+        </p>
+
         <div class="links">
           <a href="#email-modal" onclick="openEmailModal()">📧 Email</a> &nbsp;/&nbsp;
-          <a href="https://scholar.google.com/citations?user=YESlYPwAAAAJ&hl" target="_blank">📚 Scholar</a> &nbsp;/&nbsp;
-          <a href="https://github.com/JoshuaLPF/" target="_blank">💻 Github</a> &nbsp;/&nbsp;
-          <a href="#wechat-modal" onclick="openWechatModal()">💬 WeChat</a>
+          <a href="#" target="_blank">📚 Scholar</a> &nbsp;/&nbsp;
+          <a href="#" target="_blank">💻 Github</a>
         </div>
       </div>
-      <img src="images/lyupengfei.jpg" alt="profile photo" class="avatar">
+
+      <div class="avatar-wrap">
+        <img
+          src="images/yuxiaosheng.jpg"
+          alt="Xiaosheng Yu"
+          class="avatar"
+          onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+        >
+        <div class="avatar-placeholder">Profile<br>Photo</div>
+      </div>
     </div>
 
     <hr class="fade-in">
 
-    <!-- 论文 -->
+    <!-- Biography -->
+    <h3 class="fade-in"><strong>👨‍🏫 Biography</strong></h3>
+    <div class="card fade-in">
+      <p>
+        <strong>Xiaosheng Yu</strong> is an Associate Professor at the Faculty of Robot Science and Engineering,
+        Northeastern University, China. His research interests include computer vision, image processing,
+        machine learning, medical image analysis, visual saliency detection, RGB-T salient object detection,
+        and novel view synthesis.
+      </p>
+      <p>
+        He has long been engaged in algorithmic research and application-oriented system development in intelligent
+        perception. His representative research covers retinal fundus image analysis, brain tumor segmentation,
+        RGB-T salient object detection, multimodal fusion, and neural rendering.
+      </p>
+    </div>
+
+    <hr class="fade-in">
+
+    <!-- Education -->
+    <h3 class="fade-in"><strong>🎓 Education</strong></h3>
+    <div class="card fade-in">
+      <ul class="resume-list">
+        <li><strong>Postdoctoral Researcher</strong>, Computer Science and Engineering, Northeastern University, 2014.05-2017.05</li>
+        <li><strong>Ph.D.</strong>, Pattern Recognition and Intelligent Systems, Northeastern University, 2009.09-2014.05</li>
+        <li><strong>M.Sc.</strong>, Mechanical Systems Engineering, University of Liverpool, 2006.09-2007.12</li>
+      </ul>
+    </div>
+
+    <hr class="fade-in">
+
+    <!-- Academic Appointments -->
+    <h3 class="fade-in"><strong>💼 Academic Appointments</strong></h3>
+    <div class="card fade-in">
+      <ul class="resume-list">
+        <li><strong>Associate Professor</strong>, Faculty of Robot Science and Engineering, Northeastern University, 2022.01-Present</li>
+        <li><strong>Lecturer</strong>, Faculty of Robot Science and Engineering, Northeastern University, 2017.06-2021.12</li>
+      </ul>
+    </div>
+
+    <hr class="fade-in">
+
+    <!-- Research Interests -->
+    <h3 class="fade-in"><strong>🔍 Research Interests</strong></h3>
+    <div class="card fade-in">
+      <span class="services-item"><strong>Computer Vision:</strong> visual saliency detection, RGB-T perception, object detection, and image segmentation.</span>
+      <span class="services-item"><strong>Medical Image Analysis:</strong> optic disc/cup detection and segmentation, brain tumor segmentation, and vessel segmentation.</span>
+      <span class="services-item"><strong>Machine Learning:</strong> multimodal fusion, contrastive learning, representation learning, and deep neural networks.</span>
+      <span class="services-item"><strong>Novel View Synthesis:</strong> NeRF-based rendering, feature radiance fields, and frequency-enhanced neural rendering.</span>
+    </div>
+
+    <hr class="fade-in">
+
+    <!-- Publications -->
     <h3 class="fade-in"><strong>📄 Representative Publications</strong></h3>
+
     <div class="card fade-in">
-      <a href="https://ieeexplore.ieee.org/document/10982382" target="_blank">
-        <span class="papertitle"><strong>TwinsTNet: Broad-View Twins Transformer Network for Bi-Modal Salient Object Detection</strong></span>
-      </a>
+      <span class="papertitle">
+        <strong>A Dual-branch RGB-T Salient Object Detection via Spatial-frequency Integration</strong>
+      </span>
       <br>
-      <strong>Pengfei Lyu,</strong> Xiaosheng Yu, Jianning Chi, Hao Wu, Chengdong Wu, Jagath C. Rajapakse
+      <strong>Xiaosheng Yu,</strong> Huang J, Wang Y, et al.
       <br>
-      <p style="margin:5px 0;"><em><span class="tag tag-tip">TIP 2025</span> IEEE Transactions on Image Processing</em></p>
-      <a href="https://github.com/JoshuaLPF/TwinsTNet/" target="_blank">[github]</a>
+      <p class="venue-line">
+        <em>
+          <span class="tag tag-tvc">TVC 2026</span>
+          The Visual Computer, 42(2): 141.
+        </em>
+        <span class="paper-meta">第一作者 / IF: 2.9 / JCR Q2 / 中科院3区</span>
+      </p>
     </div>
+
     <div class="card fade-in">
-      <a href="https://arxiv.org/abs/2411.18409" target="_blank">
-        <span class="papertitle"><strong>Deep Fourier-embedded Network for RGB and Thermal Salient Object Detection</strong></span>
-      </a>
+      <span class="papertitle">
+        <strong>TwinsTNet: Broad-View Twins Transformer Network for Bi-Modal Salient Object Detection</strong>
+      </span>
       <br>
-      <strong>Pengfei Lyu,</strong> Xiaosheng Yu, Pak-Hei Yeung, Chengdong Wu, Jagath C. Rajapakse
+      Lyu P, <strong>Xiaosheng Yu,</strong> Chi J, et al.
       <br>
-      <p style="margin:5px 0;"><em><span class="tag tag-tcsvt">TCSVT 2025</span> IEEE Transactions on Circuits and Systems for Video Technology</em></p>
-      <a href="https://github.com/JoshuaLPF/FreqSal/" target="_blank">[github]</a>
-      <a href="https://arxiv.org/abs/2411.18409" target="_blank">[arXiv]</a>
+      <p class="venue-line">
+        <em>
+          <span class="tag tag-tip">TIP 2025</span>
+          IEEE Transactions on Image Processing, 34: 2796-2810.
+        </em>
+        <span class="paper-meta">通讯作者 / IF: 13.7 / JCR Q1 / 中科院1区</span>
+      </p>
     </div>
+
     <div class="card fade-in">
-      <a href="https://ieeexplore.ieee.org/document/10975009" target="_blank">
-        <span class="papertitle"><strong>Efficient Fourier Filtering Network with Contrastive Learning for AAV-based Unaligned Bi-modal Salient Object Detection</strong></span>
-      </a>
+      <span class="papertitle">
+        <strong>A Dual-Stream Cross-Domain Integration Network for RGB-T Salient Object Detection</strong>
+      </span>
       <br>
-      <strong>Pengfei Lyu,</strong> Pak-Hei Yeung, Xiaosheng Yu, Xiufei Cheng, Chengdong Wu, Jagath C. Rajapakse
+      <strong>Xiaosheng Yu,</strong> Cheng X, Liu Y, et al.
       <br>
-      <p style="margin:5px 0;"><em><span class="tag tag-tgrs">TGRS 2025</span> IEEE Transactions on Geoscience and Remote Sensing</em></p>
-      <a href="https://github.com/JoshuaLPF/AlignSal/" target="_blank">[github]</a>
-      <a href="https://arxiv.org/abs/2411.03728" target="_blank">[arXiv]</a>
+      <p class="venue-line">
+        <em>
+          <span class="tag tag-tce">TCE 2025</span>
+          IEEE Transactions on Consumer Electronics, 71(1): 883-894.
+        </em>
+        <span class="paper-meta">第一作者 / IF: 10.9 / JCR Q1 / 中科院分区待核验</span>
+      </p>
     </div>
+
     <div class="card fade-in">
-      <a href="https://arxiv.org/abs/2505.11909" target="_blank">
-        <span class="papertitle"><strong>Bridging the Inter-Domain Gap through Low-Level Features for Cross-Modal Medical Image Segmentation</strong></span>
-      </a>
+      <span class="papertitle">
+        <strong>A Spatial-spectral Multi-view Contrastive Learning Framework for Scene Representation Learning</strong>
+      </span>
       <br>
-      <strong>Pengfei Lyu,</strong> Pak-Hei Yeung, Xiaosheng Yu, Jing Xia, Jianning Chi, Chengdong Wu, Jagath C. Rajapakse
+      Chen J, <strong>Xiaosheng Yu,</strong> Jiang Z, et al.
       <br>
-      <p style="margin:5px 0;"><em><span class="tag tag-arxiv">arXiv 2025</span></em></p>
-      <a href="https://github.com/JoshuaLPF/LowBridge/" target="_blank">[github]</a>
-      <a href="https://arxiv.org/abs/2505.11909" target="_blank">[arXiv]</a>
+      <p class="venue-line">
+        <em>
+          <span class="tag tag-infofusion">Information Fusion 2025</span>
+          Information Fusion: 103889.
+        </em>
+        <span class="paper-meta">通讯作者 / IF: 15.5 / JCR Q1 / 中科院1区</span>
+      </p>
     </div>
+
     <div class="card fade-in">
-      <a href="https://globals.ieice.org/en_transactions/fundamentals/10.1587/transfun.2021EAL2071/_p" target="_blank">
-        <span class="papertitle"><strong>Saliency detection via absorbing Markov chain with multi-level cues</strong></span>
-      </a>
+      <span class="papertitle">
+        <strong>Idea Visual: Intent-Driven View Synthesis for Smart Mobile Devices via Retrieval-Augmented Diffusion Models</strong>
+      </span>
       <br>
-      <strong>Pengfei Lv,</strong> Xiaosheng Yu, Jianning Chi, Chengdong Wu
+      Chen J, <strong>Xiaosheng Yu,</strong> Tang Y, et al.
       <br>
-      <p style="margin:5px 0;"><em><span class="tag tag-ieice">IEICE 2022</span> IEICE Transactions on Fundamentals</em></p>
+      <p class="venue-line">
+        <em>
+          <span class="tag tag-tce">TCE 2025</span>
+          IEEE Transactions on Consumer Electronics, 71(4): 11791-11800.
+        </em>
+        <span class="paper-meta">通讯作者 / IF: 10.9 / JCR Q1 / 中科院分区待核验</span>
+      </p>
     </div>
+
     <div class="card fade-in">
-      <a href="http://cjig.ijournals.cn/jig/ch/reader/view_abstract.aspx?file_no=20210920" target="_blank">
-        <span class="papertitle"><strong>Optic disc detection based on visual saliency in fundus image (视觉显著性的眼底图像视盘检测)</strong></span>
-      </a>
+      <span class="papertitle">
+        <strong>RoGLSNet: An Efficient Global-local Scene Awareness Network with Rotary Position Embedding for Remote Image Segmentation</strong>
+      </span>
       <br>
-      <strong>Pengfei Lyu,</strong> Ying Wang, Siqi Wang, Xiaosheng Yu, Chengdong Wu
+      <strong>Xiaosheng Yu,</strong> Bai W, Chen J, et al.
       <br>
-      <p style="margin:5px 0;"><em><span class="tag tag-tutu">图图 2021</span>Journal of Image and Graphics (中国图象图形学报)</em></p>
+      <p class="venue-line">
+        <em>
+          <span class="tag tag-grsl">GRSL 2025</span>
+          IEEE Geoscience and Remote Sensing Letters, 22: 2506205.
+        </em>
+        <span class="paper-meta">第一作者 / IF: 4.4 / JCR Q1 / 中科院3区</span>
+      </p>
+    </div>
+
+    <div class="card fade-in">
+      <span class="papertitle">
+        <strong>FreqSpace-NeRF: A Fourier-enhanced Neural Radiance Fields Method via Dual-domain Contrastive Learning for Novel View Synthesis</strong>
+      </span>
+      <br>
+      <strong>Xiaosheng Yu,</strong> Tian X, Chen J, et al.
+      <br>
+      <p class="venue-line">
+        <em>
+          <span class="tag tag-cg">C&amp;G 2025</span>
+          Computers &amp; Graphics, 127: 104171.
+        </em>
+        <span class="paper-meta">第一作者 / IF: 2.8 / JCR Q2 / 中科院分区待核验</span>
+      </p>
+    </div>
+
+    <div class="card fade-in">
+      <span class="papertitle">
+        <strong>Lightweight Emotion Analysis Solution Using Tiny Machine Learning for Portable Devices</strong>
+      </span>
+      <br>
+      Bai M, <strong>Xiaosheng Yu.</strong>
+      <br>
+      <p class="venue-line">
+        <em>
+          <span class="tag tag-cee">CEE 2025</span>
+          Computers and Electrical Engineering, 123: 110038.
+        </em>
+        <span class="paper-meta">通讯作者 / IF: 4.9 / JCR Q1 / 中科院3区</span>
+      </p>
+    </div>
+
+    <div class="card fade-in">
+      <span class="papertitle">
+        <strong>Enhancing Pixel-level Analysis in Medical Imaging through Visual Instruction Tuning: Introducing PLAMi</strong>
+      </span>
+      <br>
+      Bai M, <strong>Xiaosheng Yu,</strong> Wang Y, et al.
+      <br>
+      <p class="venue-line">
+        <em>
+          <span class="tag tag-tvc">TVC 2025</span>
+          The Visual Computer, 41(8): 5625-5641.
+        </em>
+        <span class="paper-meta">通讯作者 / IF: 2.9 / JCR Q2 / 中科院3区</span>
+      </p>
+    </div>
+
+    <div class="card fade-in">
+      <span class="papertitle">
+        <strong>CMFNet: A Cross-dimensional Modal Fusion Network for Accurate Vessel Segmentation Based on OCTA Data</strong>
+      </span>
+      <br>
+      Wang S, <strong>Xiaosheng Yu,</strong> Wu H, et al.
+      <br>
+      <p class="venue-line">
+        <em>
+          <span class="tag tag-mbec">MBEC 2025</span>
+          Medical &amp; Biological Engineering &amp; Computing, 63(4): 1161-1176.
+        </em>
+        <span class="paper-meta">通讯作者 / IF: 2.6 / JCR Q2 / 中科院4区</span>
+      </p>
+    </div>
+
+    <div class="card fade-in">
+      <span class="papertitle">
+        <strong>Feature Radiance Fields: A Multi-level Feature Fusion Method with Deep Neural Network for Image Synthesis</strong>
+      </span>
+      <br>
+      Chen J, <strong>Xiaosheng Yu,</strong> Wu C, et al.
+      <br>
+      <p class="venue-line">
+        <em>
+          <span class="tag tag-asoc">ASOC 2024</span>
+          Applied Soft Computing, 167: 112262.
+        </em>
+        <span class="paper-meta">通讯作者 / IF: 6.6 / JCR Q1 / 中科院1区</span>
+      </p>
+    </div>
+
+    <div class="card fade-in">
+      <span class="papertitle">
+        <strong>Cross-modal Collaborative Propagation for RGB-T Saliency Detection</strong>
+      </span>
+      <br>
+      <strong>Xiaosheng Yu,</strong> Pang Y, Chi J, et al.
+      <br>
+      <p class="venue-line">
+        <em>
+          <span class="tag tag-tvc">TVC 2024</span>
+          The Visual Computer, 40(6): 4337-4354.
+        </em>
+        <span class="paper-meta">第一作者 / IF: 2.9 / JCR Q2 / 中科院3区</span>
+      </p>
+    </div>
+
+    <div class="card fade-in">
+      <span class="papertitle">
+        <strong>Adapting Segment Anything Model for 3D Brain Tumor Segmentation With Missing Modalities</strong>
+      </span>
+      <br>
+      Lei X, <strong>Xiaosheng Yu,</strong> Bai M, et al.
+      <br>
+      <p class="venue-line">
+        <em>
+          <span class="tag tag-ijist">IJIST 2024</span>
+          International Journal of Imaging Systems and Technology, 34(5): e23177.
+        </em>
+        <span class="paper-meta">通讯作者 / IF: 2.5 / JCR Q2 / 中科院4区</span>
+      </p>
+    </div>
+
+    <div class="card fade-in">
+      <span class="papertitle">
+        <strong>Optic Disc Detection Based on Fully Convolutional Network and Weighted Matrix Recovery Model</strong>
+      </span>
+      <br>
+      Wang S, <strong>Xiaosheng Yu,</strong> Jia W, et al.
+      <br>
+      <p class="venue-line">
+        <em>
+          <span class="tag tag-mbec">MBEC 2023</span>
+          Medical &amp; Biological Engineering &amp; Computing, 61(12): 3319-3333.
+        </em>
+        <span class="paper-meta">通讯作者 / IF: 2.6 / JCR Q2 / 中科院4区</span>
+      </p>
+    </div>
+
+    <div class="card fade-in">
+      <span class="papertitle">
+        <strong>An Efficient Hierarchical Optic Disc and Cup Segmentation Network Combined with Multi-task Learning and Adversarial Learning</strong>
+      </span>
+      <br>
+      Wang Y, <strong>Xiaosheng Yu,</strong> Wu C.
+      <br>
+      <p class="venue-line">
+        <em>
+          <span class="tag tag-jdi">JDI 2022</span>
+          Journal of Digital Imaging, 35(3): 638-653.
+        </em>
+        <span class="paper-meta">通讯作者 / IF: 4.34 / JCR Q2 / 中科院分区待核验</span>
+      </p>
+    </div>
+
+    <div class="card fade-in">
+      <span class="papertitle">
+        <strong>Brain Tumor Segmentation in MR Images Using a Sparse Constrained Level Set Algorithm</strong>
+      </span>
+      <br>
+      Lei X, <strong>Xiaosheng Yu,</strong> Chi J, et al.
+      <br>
+      <p class="venue-line">
+        <em>
+          <span class="tag tag-eswa">ESWA 2021</span>
+          Expert Systems With Applications, 168: 114262.
+        </em>
+        <span class="paper-meta">通讯作者 / IF: 7.5 / JCR Q1 / 中科院1区</span>
+      </p>
+    </div>
+
+    <div class="card fade-in">
+      <span class="papertitle">
+        <strong>Salient Object Detection Based on Novel Graph Model</strong>
+      </span>
+      <br>
+      Pang Y, <strong>Xiaosheng Yu,</strong> Wang Y, et al.
+      <br>
+      <p class="venue-line">
+        <em>
+          <span class="tag tag-jvcir">JVCIR 2019</span>
+          Journal of Visual Communication and Image Representation, 65: 102676.
+        </em>
+        <span class="paper-meta">通讯作者 / IF: 3.1 / JCR Q2 / 中科院4区</span>
+      </p>
     </div>
 
     <hr class="fade-in">
 
-    <!-- 项目 -->
-    <h3 class="fade-in"><strong>📊 Funded Projects</strong></h3>
-    <div class="card fade-in">
-      <span class="projecttitle"><strong>Junma Plan High-Level Talent Recruitment Program</strong></span>
-      <br>
-      <strong>Pengfei Lyu,</strong>
-      <br>
-      <p style="margin:5px 0;"><em>Supported by the Inner Mongolia University, 2026.01-2031.01.</em></p>
-    </div>
-    <div class="card fade-in">
-      <span class="projecttitle"><strong>Doctoral Innovation Program -- "Information discrimination and modal fusion based multi-modal salient object detection in complex scenes"</strong></span>
-      <br>
-      <strong>Pengfei Lyu,</strong> Chengdong Wu
-      <br>
-      <p style="margin:5px 0;"><em>Supported by the Fundamental Research Funds for the Central Universities, Ministry of Education of China, 2023.01-2024.12.</em></p>
-    </div>
-
-    <hr class="fade-in">
-
-    <!-- 学术服务 -->
+    <!-- Academic Services -->
     <h3 class="fade-in"><strong>🤝 Academic Services</strong></h3>
     <div class="card fade-in">
-      <span class="services-item"><strong>Area Chair:</strong> <a href="https://mp.weixin.qq.com/s/hGIJ4XZRZo5C3btYQ7cVog" target="_blank">2nd RoSeN</a></span>
-      <span class="services-item"><strong>Reviewer:</strong> TIP, TNNLS, TMM, TCSVT, TGRS, TASE, TIM, etc.</span>
+      <span class="services-item">
+        <strong>Academic Contribution:</strong> Published over 30 papers as first author or corresponding author,
+        including more than 20 SCI-indexed papers.
+      </span>
+      <span class="services-item">
+        <strong>Research Areas:</strong> Computer Vision, Image Processing, Machine Learning, Medical Image Analysis,
+        Visual Saliency Detection, and Novel View Synthesis.
+      </span>
     </div>
 
-    <hr class="fade-in">
-
-    <!-- 课题组相册 -->
-    <h3 class="fade-in"><strong>📸 Research Group Gallery</strong></h3>
-    <div class="gallery-grid fade-in">
-      <div class="gallery-item">
-        <img src="images/gallery/group1.jpg" alt="Group Photo 1" onclick="openModal(this.src)">
-      </div>
-      <div class="gallery-item">
-        <img src="images/gallery/group2.jpg" alt="Group Photo 2" onclick="openModal(this.src)">
-      </div>
-      <div class="gallery-item">
-        <img src="images/gallery/group3.jpg" alt="Group Photo 3" onclick="openModal(this.src)">
-      </div>
-      <div class="gallery-item">
-        <img src="images/gallery/group4.jpg" alt="Group Photo 4" onclick="openModal(this.src)">
-      </div>
-    </div>
-
-    <!-- 访问统计 -->
     <div class="visitor-count fade-in">
       👀✨ Total Visits: <span id="visit-count">0</span>
     </div>
 
   </div>
 
-  <!-- 邮箱弹窗 -->
+  <!-- Email Modal -->
   <div id="email-modal" class="modal">
     <div class="modal-content">
       <span class="close" onclick="closeEmailModal()">&times;</span>
-      <p class="email-text" id="emailAddr" onclick="copyEmail()">lyupengfei1995@outlook.com</p>
+      <p class="email-text" id="emailAddr" onclick="copyEmail()">please-replace-with-real-email@example.com</p>
       <p id="copyTip">📧 Click to copy / Contact me via email</p>
     </div>
   </div>
 
-  <!-- 微信弹窗 -->
-  <div id="wechat-modal" class="modal">
-    <div class="modal-content">
-      <span class="close" onclick="closeWechatModal()">&times;</span>
-      <img src="images/wechat.jpg" alt="Wechat QR Code">
-      <p>💬 Scan to add WeChat</p>
-    </div>
-  </div>
-
-  <!-- 图片预览弹窗 -->
-  <div id="img-modal" class="modal" onclick="closeImgModal()">
-    <div class="modal-content">
-      <span class="close" onclick="closeImgModal()">&times;</span>
-      <img id="modal-img" style="max-width: 90%; max-height: 80vh; transition: 0.2s;" src="" alt="Preview">
-    </div>
-  </div>
-
   <script>
-    // 邮箱弹窗
-    function openEmailModal() { document.getElementById("email-modal").style.display = "block"; }
-    function closeEmailModal() { document.getElementById("email-modal").style.display = "none"; }
-
-    // 微信弹窗
-    function openWechatModal() { document.getElementById("wechat-modal").style.display = "block"; }
-    function closeWechatModal() { document.getElementById("wechat-modal").style.display = "none"; }
-
-    // 图片预览弹窗+滚轮缩放
-    let imgScale = 1;
-    function openModal(src) {
-      imgScale = 1;
-      document.getElementById("img-modal").style.display = "block";
-      document.getElementById("modal-img").src = src;
-      document.getElementById("modal-img").style.transform = `scale(${imgScale})`;
+    function openEmailModal() {
+      document.getElementById("email-modal").style.display = "block";
     }
-    function closeImgModal() { document.getElementById("img-modal").style.display = "none"; }
 
-    // 图片滚轮缩放
-    document.getElementById('modal-img').addEventListener('wheel', (e) => {
-      e.preventDefault();
-      imgScale += e.deltaY > 0 ? -0.1 : 0.1;
-      imgScale = Math.max(0.5, Math.min(2, imgScale));
-      e.target.style.transform = `scale(${imgScale})`;
-    });
+    function closeEmailModal() {
+      document.getElementById("email-modal").style.display = "none";
+    }
 
-    // 点击遮罩关闭弹窗
     window.onclick = function(event) {
       const emailModal = document.getElementById("email-modal");
-      const wechatModal = document.getElementById("wechat-modal");
-      const imgModal = document.getElementById("img-modal");
-      if (event.target === emailModal) closeEmailModal();
-      if (event.target === wechatModal) closeWechatModal();
-      if (event.target === imgModal) closeImgModal();
-    }
+      if (event.target === emailModal) {
+        closeEmailModal();
+      }
+    };
 
-    // 一键复制邮箱
     function copyEmail() {
       const email = document.getElementById("emailAddr").innerText;
       navigator.clipboard.writeText(email).then(() => {
@@ -551,51 +835,50 @@
       });
     }
 
-    // 回到顶部
     const backTopBtn = document.getElementById("backTop");
+
     window.onscroll = function() {
       backTopBtn.style.display = window.scrollY > 300 ? "flex" : "none";
     };
+
     backTopBtn.onclick = function() {
       window.scrollTo(0, 0);
     };
 
-    // 深色/浅色模式切换
     const themeBtn = document.getElementById("themeToggle");
+
     themeBtn.onclick = function() {
       document.body.classList.toggle("dark-mode");
       this.innerText = document.body.classList.contains("dark-mode") ? "☀️ Light Mode" : "🌙 Dark Mode";
-    }
+    };
 
-    // 页面加载动画
-    window.addEventListener('load', () => {
+    window.addEventListener("load", () => {
       setTimeout(() => {
-        document.getElementById('loader').classList.add('hidden');
-      }, 800);
+        document.getElementById("loader").classList.add("hidden");
+      }, 500);
     });
 
-    // 滚动淡入动画
-    const fadeElements = document.querySelectorAll('.fade-in');
+    const fadeElements = document.querySelectorAll(".fade-in");
+
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
+          entry.target.classList.add("visible");
         }
       });
     }, { threshold: 0.1 });
+
     fadeElements.forEach(el => observer.observe(el));
 
-    // 本地访问统计
-    let visitCount = localStorage.getItem('visitCount') || 0;
+    let visitCount = localStorage.getItem("visitCount") || 0;
     visitCount = parseInt(visitCount) + 1;
-    localStorage.setItem('visitCount', visitCount);
-    document.getElementById('visit-count').innerText = visitCount;
+    localStorage.setItem("visitCount", visitCount);
+    document.getElementById("visit-count").innerText = visitCount;
 
-    // 全局快捷键
-    document.addEventListener('keydown', (e) => {
+    document.addEventListener("keydown", (e) => {
       const key = e.key.toLowerCase();
-      if(key === 'd') themeBtn.click();
-      if(key === 't') backTopBtn.click();
+      if (key === "d") themeBtn.click();
+      if (key === "t") backTopBtn.click();
     });
   </script>
 </body>
