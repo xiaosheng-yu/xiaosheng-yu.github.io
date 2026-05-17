@@ -237,16 +237,18 @@
 
     .students-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      grid-template-columns: repeat(auto-fill, 160px);
       gap: 1rem;
       margin-top: 0.5rem;
+      justify-content: start;
     }
     
     .student-card {
+      width: 160px;
       background-color: var(--card-bg);
       border-radius: 10px;
       box-shadow: var(--shadow);
-      padding: 0.9rem;
+      padding: 0.8rem;
       text-align: center;
       border: 1px solid var(--border-color);
     }
@@ -257,9 +259,9 @@
     }
     
     .student-photo-wrap {
-      width: 120px;
-      height: 120px;
-      margin: 0 auto 0.6rem auto;
+      width: 115px;
+      height: 115px;
+      margin: 0 auto 0.5rem auto;
       border-radius: 50%;
       overflow: hidden;
       background: var(--bg-color);
@@ -287,16 +289,15 @@
       display: inline-block;
       font-weight: 600;
       color: var(--primary);
-      font-size: 1.02em;
-      margin-top: 0.2rem;
+      font-size: 1em;
+      margin-top: 0.15rem;
     }
     
     .student-info {
-      font-size: 0.88em;
+      font-size: 0.86em;
       color: var(--text-color);
-      margin-top: 0.2rem;
+      margin-top: 0.15rem;
     }
-
     .modal {
       display: none;
       position: fixed;
@@ -879,7 +880,7 @@
         <div class="student-placeholder">Photo</div>
       </div>
       <a class="student-name" href="https://scholar.google.com/citations?user=Tf5C2hkAAAAJ&hl=zh-CN" target="_blank" rel="noopener noreferrer">
-        Student Name 1
+        Jubo Chen
       </a>
       <div class="student-info">Ph.D. Student</div>
     </div>
@@ -887,7 +888,7 @@
     <div class="student-card">
       <div class="student-photo-wrap">
         <img
-          src="images/yangpu'.jpg"
+          src="images/yangpu.jpg"
           alt="Yangpu Tang"
           class="student-photo"
           onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"
@@ -895,7 +896,7 @@
         <div class="student-placeholder">Photo</div>
       </div>
       <a class="student-name" href="https://yangpu-tang.github.io/#email-modal" target="_blank" rel="noopener noreferrer">
-        Student Name 2
+        Yangpu Tang
       </a>
       <div class="student-info">Master Student</div>
     </div>
